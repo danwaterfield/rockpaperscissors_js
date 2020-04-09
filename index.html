@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title> Rock, Paper, Scissors </title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		
+
+
+		function game() {
+
+
+		const computerSelection = computerPlay()
+
+		alert('Let`s play rock, paper, scissors. Best out of five!')
+		
+		let playerSelection = prompt('Enter your choice: rock, paper, or scissors').toLowerCase()
+
+		function computerPlay() {
+			const choices = ['rock', 'paper', 'scissors']
+			let computerSelection = choices[Math.floor(Math.random() * choices.length)]
+			return computerSelection
+			}
+
+
+			function playRound() {
+
+                const computerSelection = computerPlay()
+                if ((playerSelection == "Rock" && computerSelection == "Scissors") || (playerSelection == "Paper" && computerSelection == "Rock") || (playerSelection == "Scissors" && computerSelection == "Paper"))
+                {
+                    return `You Win! ${playerSelection} beats ${computerSelection}`;
+                } else if (playerSelection == computerSelection) {
+                    return `It's a Draw! You both picked ${playerSelection}`;
+                } else {
+                    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+                }
+            }
+
+                 let playerWinCount = 0;
+                let computerWinCount = 0;
+                let i;
+
+                for (i = 1; i < 6 && (playerWinCount !== 3 && computerWinCount !== 3); i++){
+                    rawResult = playRound();
+                    exclamationPointIndex = rawResult.indexOf("!");
+                    result = rawResult.slice(0,exclamationPointIndex).trim();
+                    if (result == "You Win"){
+                        playerWinCount = playerWinCount + 1;
+                    } else if (result == "You Lose"){
+                        computerWinCount = computerWinCount +1;
+                    } 
+                    console.log(`Round ${i}: ${rawResult}. Player: ${playerWinCount}, Computer: ${computerWinCount}`);
+                }
+            
+
+                if (playerWinCount > computerWinCount){
+                    alert(`Congrats! You have won. Play again?`); 
+                } else if (playerWinCount < computerWinCount){
+                    alert(`Sorry! You have lost. Try again?`);
+                } else {
+                    alert(`You have drawn. Play again?`);
+                }
+            }
+		
+
+
+     	game()
+
+
+	</script>
+</body>
+</html>
+
